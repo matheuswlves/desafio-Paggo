@@ -5,7 +5,7 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copiando o package.json e o package-lock.json
-COPY "C:/Users/mathe/OneDrive/case técnico PAGGO/pages/desafio-Paggo/package.json" /app/
+COPY "C:/Users/mathe/projeto-paggo/pages/desafio-Paggo/package.json" /app/
 
 
 
