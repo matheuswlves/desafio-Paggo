@@ -5,9 +5,8 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copiando o package.json e o package-lock.json
-WORKDIR /app
-COPY package.json /app/
-RUN npm install
+COPY "C:/Users/mathe/OneDrive/case técnico PAGGO/pages/desafio-Paggo/package.json" /app/
+
 
 
 # Instalando as dependências
