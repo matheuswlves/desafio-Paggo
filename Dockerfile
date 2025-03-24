@@ -1,23 +1,17 @@
-# Usa uma imagem leve do Node.js
-FROM node:18-alpine
+# Use uma imagem base do Node.js
+FROM node:16
 
-# Define o diretório de trabalho dentro do container
+# Defina o diretório de trabalho no contêiner
 WORKDIR /app
 
-# Copia apenas package.json e package-lock.json para instalar dependências primeiro (otimiza cache)
-COPY package*.json ./
-
-# Instala as dependências
-RUN npm install
-
-# Copia o restante do código
+# Copie os arquivos do projeto para dentro do contêiner
 COPY . .
 
-# Compila o projeto NestJS
-RUN npm run build
+# Instale as dependências
+RUN npm install
 
-# Expondo a porta padrão do NestJS
+# Exponha a porta do seu aplicativo
 EXPOSE 3000
 
-# Comando para rodar a aplicação
-CMD ["npm", "run", "start:prod"]
+# Comando para rodar o aplicativo
+CMD ["npm", "start"]
