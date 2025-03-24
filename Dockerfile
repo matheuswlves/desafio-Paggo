@@ -1,25 +1,23 @@
-# Usando uma imagem oficial do Node.js como base
+# Usa uma imagem leve do Node.js
 FROM node:18-alpine
 
-# Definindo o diretório de trabalho dentro do container
+# Define o diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copiando o package.json e o package-lock.json
-COPY "C:/Users/mathe/projeto-paggo/pages/desafio-Paggo/package.json" /app/
+# Copia apenas package.json e package-lock.json para instalar dependências primeiro (otimiza cache)
+COPY package*.json ./
 
-
-
-# Instalando as dependências
+# Instala as dependências
 RUN npm install
 
-# Copiando o restante dos arquivos
+# Copia o restante do código
 COPY . .
 
-# Compilando o projeto
+# Compila o projeto NestJS
 RUN npm run build
 
-# Expondo a porta que o NestJS utiliza
+# Expondo a porta padrão do NestJS
 EXPOSE 3000
 
-# Comando para iniciar a aplicação
+# Comando para rodar a aplicação
 CMD ["npm", "run", "start:prod"]
